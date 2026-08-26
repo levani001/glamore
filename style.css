@@ -262,5 +262,5 @@ footer { background: var(--dark); color: #888; padding: 20px 0; font-size: 14px;
 }
 
 .logo-link:hover .logo-img {
-  transform: scale(3.06) !important;
+  transform: scale(1.06) !important;
 }
