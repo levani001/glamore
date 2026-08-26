@@ -264,3 +264,94 @@ footer { background: var(--dark); color: #888; padding: 20px 0; font-size: 14px;
 .logo-link:hover .logo-img {
   transform: scale(1.06) !important;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 768px-ზე ნაკლები ეკრანის მქონე მოწყობილობებისთვის (ტელეფონები) */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    font-size: 16px; /* ტექსტის ოპტიმალური ზომა მობილურისთვის */
+  }
+
+  /* თუ იყენებთ Flexbox-ს სვეტებისთვის */
+  .container, .row, .grid {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+}
+
+/* მობილური მოწყობილობების ოპტიმიზაცია */
+@media screen and (max-width: 768px) {
+
+  /* 1. ჰედერის და მენიუს გასწორება */
+  header, nav, .navbar {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    height: auto !important;
+    padding: 10px !important;
+    z-index: 1000 !important;
+  }
+
+  /* 2. Aesthetic Center სათაურის ზომების შემცირება */
+  .hero h1, .main-title, h1 {
+    font-size: 24px !important; /* შემცირებული შრიფტი */
+    letter-spacing: 2px !important; /* ასოებს შორის დაშორების შემცირება */
+    line-height: 1.2 !important;
+    text-align: center !important;
+    margin: 10px 0 !important;
+    word-break: normal !important;
+  }
+
+  /* 3. სექციების გადაფარვის პრევენცია */
+  .hero, .banner, .top-section {
+    height: auto !important;
+    min-height: unset !important;
+    padding: 20px 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* 4. 100% სტერილიზაცია / მომხმარებლების ბლოკის გასწორება */
+  .stats, .counters, .features {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    position: relative !important;
+    margin-top: 15px !important;
+  }
+
+  .stat-item, .feature-item {
+    width: 30% !important;
+    font-size: 12px !important;
+    text-align: center !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  
+  /* სათაურის (Aesthetic Center) ერთ ხაზზე დასატევად */
+  .hero h1, .brand-title, .logo-text, h1 {
+    font-size: 18px !important;       /* ოდნავ პატარა შრიფტი მობილურისთვის */
+    letter-spacing: 2px !important;    /* ასოებს შორის დაშორების შემცირება (რომ არ გაიწელოს) */
+    white-space: nowrap !important;    /* კრძალავს ტექსტის მეორე ხაზზე ჩამოტანას */
+    display: inline-block !important;
+    text-align: center !important;
+    margin: 10px 0 !important;
+  }
+
+  /* ლოგოსა და ტექსტის ბლოკის სწორი განლაგება */
+  .header-container, .logo-wrapper {
+    display: flex !important;
+    flex-direction: column !important; /* ლოგო ზემოთ, ტექსტი ქვემოთ */
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+}
