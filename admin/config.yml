@@ -1,0 +1,16 @@
+backend:
+  name: git-gateway
+  branch: main # თუ თქვენი მთავარი ბრენჩია master, ჩაწერთ master
+
+media_folder: "images" # საქაღალდე სადაც ფოტოები აიტვირთება
+public_folder: "images"
+
+collections:
+  - name: "pages"
+    label: "გვერდები"
+    files:
+      - file: "index.html"
+        label: "მთავარი გვერდი"
+        name: "index"
+        fields:
+          - { label: "სათაური", name: "title", widget: "string" }
