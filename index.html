@@ -6,19 +6,18 @@
   <title> Gla-More | სილამაზის სალონი</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="fav.png" circle="true">
-  
+  <link rel="icon" type="image/png" href="fav.png">
 </head>
 <body>
 
   <!-- Navigation -->
   <header class="navbar">
     <div class="nav-container">
-    <!-- ლოგო + ბრენდის სახელი -->
-    <a href="index.html" class="logo-link">
-      <img src="logo.jpeg" alt="GlaMore Logo" class="logo-img">
-      <span class="logo-text">Gla-More Aesthetic Center</span>
-    </a>
+      <!-- ლოგო + ბრენდის სახელი -->
+      <a href="index.html" class="logo-link">
+        <img src="logo.jpeg" alt="GlaMore Logo" class="logo-img">
+        <span class="logo-text">Gla-More Aesthetic Center</span>
+      </a>
       <nav>
         <ul class="nav-links">
           <li><a href="#about">ჩვენ შესახებ</a></li>
@@ -28,7 +27,6 @@
         </ul>
       </nav>
     </div>
-    
   </header>
 
   <!-- Hero Section -->
@@ -128,7 +126,7 @@
           <ul class="info-list">
             <li>📍 <strong>მისამართი:</strong> ვაშლიჯვარი ვ. გოძიაშვილის 2ა, თბილისი</li>
             <li>🕒 <strong>სამუშაო საათები:</strong> ყოველდღე 10:00 - 22:00</li>
-            <li>📞 <strong>ტელეფონი:</strong> +995 (995) 574 02 96 07</li>
+            <li>📞 <strong>ტელეფონი:</strong> +995 574 02 96 07</li>
             <li>✉️ <strong>ელ.ფოსტა:</strong> ninikoaaa@gmail.com</li>
           </ul>
         </div>
@@ -143,7 +141,7 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="phone">ტელეფონი *</label>
-                <input input type="tel" id="phone" placeholder="599 12 34 56" maxlength="11" required>
+                <input type="tel" id="phone" placeholder="599 12 34 56" maxlength="11" required>
               </div>
             </div>
 
@@ -189,6 +187,14 @@
     </div>
   </section>
 
+  <!-- შეთავაზებები და გალერეა -->
+  <section id="special-offers" class="services-section" style="background: #ffffff;">
+    <div class="container">
+      <h2 class="section-title">🔥 სპეციალური შეთავაზებები & ნამუშევრები</h2>
+      <div id="publicOffersGrid" class="services-grid"></div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <div class="container text-center">
@@ -196,107 +202,85 @@
     </div>
   </footer>
 
-  <!-- შეთავაზებები და გალერეა -->
-<section id="special-offers" class="services-section" style="background: #ffffff;">
-  <div class="container">
-    <h2 class="section-title">🔥 სპეციალური შეთავაზებები & ნამუშევრები</h2>
-    <div id="publicOffersGrid" class="services-grid"></div>
-  </div>
-</section>
-
-<script>
-  // ატვირთული შეთავაზებების გამოჩენა მთავარ გვერდზე
-  async function loadPublicOffers() {
-    const res = await fetch('/api/offers');
-    const data = await res.json();
-    const grid = document.getElementById('publicOffersGrid');
-    if(!grid) return;
-    grid.innerHTML = '';
-
-    data.forEach(o => {
-      const mediaTag = o.mediaType === 'video' 
-        ? `<video src="${o.mediaUrl}" style="width:100%; height:200px; object-fit:cover; border-radius:8px;" controls></video>`
-        : `<img src="${o.mediaUrl}" style="width:100%; height:200px; object-fit:cover; border-radius:8px;">`;
-
-      grid.innerHTML += `
-        <div class="service-card">
-          ${mediaTag}
-          <h3 style="margin-top:15px;">${o.title}</h3>
-          <p style="font-size:18px; color:#d47a85; font-weight:bold;">${o.price}</p>
-        </div>
-      `;
-    });
-  }
-  loadPublicOffers();
-</script>
-
+  <!-- Backend-ის მისამართის კონსტანტა (შეცვალეთ თქვენი Render ბმულით) -->
   <script>
+    const API_BASE_URL = "https://YOUR-BACKEND.onrender.com"; 
+
+    // 1. შეთავაზებების ჩატვირთვა
+    async function loadPublicOffers() {
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/offers`);
+        const data = await res.json();
+        const grid = document.getElementById('publicOffersGrid');
+        if(!grid) return;
+        grid.innerHTML = '';
+
+        data.forEach(o => {
+          const mediaTag = o.mediaType === 'video' 
+            ? `<video src="${o.mediaUrl}" style="width:100%; height:200px; object-fit:cover; border-radius:8px;" controls></video>`
+            : `<img src="${o.mediaUrl}" style="width:100%; height:200px; object-fit:cover; border-radius:8px;">`;
+
+          grid.innerHTML += `
+            <div class="service-card">
+              ${mediaTag}
+              <h3 style="margin-top:15px;">${o.title}</h3>
+              <p style="font-size:18px; color:#d47a85; font-weight:bold;">${o.price}</p>
+            </div>
+          `;
+        });
+      } catch (err) {
+        console.error('Error fetching offers:', err);
+      }
+    }
+    loadPublicOffers();
+
+    // 2. ტელეფონის ნომრის ფორმატირება
+    const phoneInput = document.getElementById('phone');
+
+    phoneInput.addEventListener('keypress', (e) => {
+      if (!/[0-9]/.test(e.key)) {
+        e.preventDefault();
+      }
+    });
+
+    phoneInput.addEventListener('input', (e) => {
+      let rawValue = e.target.value.replace(/\D/g, '');
+      if (rawValue.length > 9) rawValue = rawValue.substring(0, 9);
+
+      let formattedValue = '';
+      if (rawValue.length > 0) formattedValue += rawValue.substring(0, 3);
+      if (rawValue.length >= 4) formattedValue += ' ' + rawValue.substring(3, 5);
+      if (rawValue.length >= 6) formattedValue += ' ' + rawValue.substring(5, 7);
+      if (rawValue.length >= 8) formattedValue += ' ' + rawValue.substring(7, 9);
+
+      e.target.value = formattedValue;
+    });
+
+    // 3. თარიღების და საათების მართვა
     const dateInput = document.getElementById('date');
     const serviceSelect = document.getElementById('service');
     const timeSelect = document.getElementById('time');
-    const phoneInput = document.getElementById('phone');
 
-// 1. კლავიატურაზე აკრეფისას ასოების და სიმბოლოების დაბლოკვა
-phoneInput.addEventListener('keypress', (e) => {
-  // თუ დაჭერილი კლავიში არ არის ციფრი (0-9) — დავბლოკოთ
-  if (!/[0-9]/.test(e.key)) {
-    e.preventDefault();
-  }
-});
-
-// 2. ჩასმისას (Paste) ასოების წაშლა და ფორმატირება --- -- -- --
-phoneInput.addEventListener('input', (e) => {
-  // მხოლოდ ციფრების დატოვება
-  let rawValue = e.target.value.replace(/\D/g, '');
-
-  // ქართული მობილური ნომრისთვის მაქსიმუმ 9 ციფრი (მაგ: 599123456)
-  if (rawValue.length > 9) {
-    rawValue = rawValue.substring(0, 9);
-  }
-
-  // ფორმატირება: --- -- -- --
-  let formattedValue = '';
-  if (rawValue.length > 0) {
-    formattedValue += rawValue.substring(0, 3);
-  }
-  if (rawValue.length >= 4) {
-    formattedValue += ' ' + rawValue.substring(3, 5);
-  }
-  if (rawValue.length >= 6) {
-    formattedValue += ' ' + rawValue.substring(5, 7);
-  }
-  if (rawValue.length >= 8) {
-    formattedValue += ' ' + rawValue.substring(7, 9);
-  }
-
-  e.target.value = formattedValue;
-});
-    
-    // წარსული თარიღის ბლოკირება
     const today = new Date().toISOString().split('T')[0];
     dateInput.min = today;
 
-    // ფუნქცია: საათების განახლება და დაჯავშნილების გადახაზვა
     async function updateAvailableTimes() {
       const selectedService = serviceSelect.value;
       const selectedDate = dateInput.value;
 
       timeSelect.innerHTML = '<option value="" disabled selected>აირჩიეთ დრო</option>';
 
-      if (!selectedService || !selectedDate) {
-        return;
-      }
+      if (!selectedService || !selectedDate) return;
 
       let bookedTimes = [];
       try {
-        const res = await fetch(`/api/booked-slots?service=${encodeURIComponent(selectedService)}&date=${selectedDate}`);
+        const res = await fetch(`${API_BASE_URL}/api/booked-slots?service=${encodeURIComponent(selectedService)}&date=${selectedDate}`);
         const data = await res.json();
         bookedTimes = data.bookedTimes || [];
       } catch (err) {
         console.error('Error fetching booked slots:', err);
       }
 
-      // საათების შევსება 10:00-დან 21:00-მდე
       for (let h = 10; h <= 21; h++) {
         const hourStr = h < 10 ? `0${h}:00` : `${h}:00`;
         const option = document.createElement('option');
@@ -317,7 +301,7 @@ phoneInput.addEventListener('input', (e) => {
     serviceSelect.addEventListener('change', updateAvailableTimes);
     dateInput.addEventListener('change', updateAvailableTimes);
 
-    // ფორმის გაგზავნა
+    // 4. ფორმის გაგზავნა
     document.getElementById('bookingForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       
@@ -339,7 +323,7 @@ phoneInput.addEventListener('input', (e) => {
       };
 
       try {
-        const response = await fetch('/api/booking', {
+        const response = await fetch(`${API_BASE_URL}/api/booking`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
