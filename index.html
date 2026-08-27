@@ -4,271 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Gla-More | სილამაზის სალონი</title>
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="fav.png">
-
-  <style>
-    /* ==========================================
-       1. ზოგადი სტილები და Bounding
-       ========================================== */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #fcfcfc;
-      color: #333;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* ==========================================
-       2. ჰედერი & ნავიგაცია (DESKTOP)
-       ========================================== */
-    header, .navbar {
-      position: relative;
-      width: 100%;
-      background-color: #ffffff !important;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 15px 20px;
-    }
-
-    .logo-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .logo-img {
-      height: 50px;
-      width: auto;
-      border-radius: 50%;
-    }
-
-    .logo-text {
-      font-size: 22px;
-      letter-spacing: 2px;
-      white-space: nowrap;
-      color: #c5a059;
-      font-weight: 600;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-
-    .btn-book-nav {
-      background-color: #d47a85;
-      color: #fff !important;
-      padding: 8px 16px;
-      border-radius: 20px;
-    }
-
-    /* ==========================================
-       3. Hero & სექციების სტილები
-       ========================================== */
-    .hero {
-      position: relative;
-      background: #222 url('hero-bg.jpg') center/cover no-repeat;
-      color: #fff;
-      text-align: center;
-      padding: 100px 20px;
-    }
-
-    .hero-content h1 {
-      font-size: 36px;
-      margin-bottom: 15px;
-    }
-
-    .hero-content p {
-      font-size: 18px;
-      margin-bottom: 25px;
-    }
-
-    .btn-primary {
-      background: #d47a85;
-      color: #fff;
-      padding: 12px 30px;
-      text-decoration: none;
-      border-radius: 25px;
-      display: inline-block;
-    }
-
-    .about-section, .services-section, .booking-section {
-      padding: 60px 0;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .service-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .booking-wrapper {
-      display: flex;
-      gap: 40px;
-      background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    }
-
-    .booking-info, .booking-form-box {
-      flex: 1;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: 500;
-    }
-
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: #d47a85;
-      color: #fff;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .status-msg {
-      margin-top: 15px;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .status-msg.success { color: green; }
-    .status-msg.error { color: red; }
-
-    footer {
-      background: #111;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
-
-    /* ==========================================
-       4. მობილურის (MOBILE) RESPONSIVE სტილები
-       ========================================== */
-    @media screen and (max-width: 768px) {
-      header, .navbar {
-        position: sticky !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-      }
-
-      .nav-container {
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        padding: 8px 12px !important;
-      }
-
-      .logo-img {
-        height: 40px !important;
-        width: auto !important;
-      }
-
-      .logo-text {
-        font-size: 13px !important;
-        letter-spacing: 0.5px !important;
-        white-space: nowrap !important;
-      }
-
-      .nav-links {
-        display: none; /* მობილურზე მენიუს დამალვა/მოდიფიკაცია */
-      }
-
-      .hero-content h1 {
-        font-size: 18px !important;
-        line-height: 1.3 !important;
-        white-space: normal !important;
-        word-break: break-word !important;
-      }
-
-      .hero-content p {
-        font-size: 13px !important;
-      }
-
-      .booking-wrapper {
-        flex-direction: column !important;
-        padding: 15px !important;
-      }
-    }
-  </style>
+  <link rel="icon" type="image/png" href="images/fav.png" circle="true">
+  
 </head>
 <body>
 
   <!-- Navigation -->
   <header class="navbar">
     <div class="nav-container">
-      <a href="index.html" class="logo-link">
-        <img src="logo.jpeg" alt="GlaMore Logo" class="logo-img">
-        <span class="logo-text">Gla-More Aesthetic Center</span>
-      </a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#about">ჩვენ შესახებ</a></li>
-          <li><a href="#services">სერვისები</a></li>
-          <li><a href="#prices">ფასები</a></li>
-          <li><a href="#booking" class="btn-book-nav">დაჯავშნა</a></li>
-        </ul>
-      </nav>
+    <!-- ლოგო + ბრენდის სახელი -->
+    <a href="index.html" class="logo-link">
+      <img src="images/logo.jpeg" alt="GlaMore Logo" class="logo-img">
+      <span class="logo-text">Gla-More Aesthetic Center</span>
+    </a>
+        <!-- <nav>
+          <ul class="nav-links">
+            <li><a href="#about">ჩვენ შესახებ</a></li>
+            <li><a href="#services">სერვისები</a></li>
+            <li><a href="#booking" class="btn-book-nav">დაჯავშნა</a></li>
+          </ul>
+        </nav> -->
     </div>
+    
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>გახადე ყოველი დღე განსაკუთრებული</h1>
       <p>პროფესიონალური მოვლა, პრემიუმ პროდუქცია და ინდივიდუალური სტილი</p>
@@ -279,9 +43,16 @@
   <!-- About Section -->
   <section id="about" class="about-section">
     <div class="container">
-      <div class="about-text">
-        <h2>კეთილი იყოს თქვენი მობრძანება Glamour Studio-ში</h2>
-        <p>ჩვენი სალონი გთავაზობთ უმაღლესი ხარისხის სილამაზისა და ესთეტიკის სერვისებს. ჩვენი სერტიფიცირებული ოსტატები იყენებენ მხოლოდ საერთაშორისო დონის პრემიუმ ბრენდების პროდუქციას.</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>კეთილი იყოს თქვენი მობრძანება Glamour Studio-ში</h2>
+          <p>ჩვენი სალონი გთავაზობთ უმაღლესი ხარისხის სილამაზისა და ესთეტიკის სერვისებს. ჩვენი სერტიფიცირებული ოსტატები იყენებენ მხოლოდ საერთაშორისო დონის პრემიუმ ბრენდების პროდუქციას.</p>
+          <div class="stats">
+            <div class="stat-item"><h3>8+</h3><p>მიმართულება</p></div>
+            <div class="stat-item"><h3>100%</h3><p>სტერილურობა</p></div>
+            <div class="stat-item"><h3>1000+</h3><p>კმაყოფილი მომხმარებელი</p></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -289,16 +60,57 @@
   <!-- Services Section -->
   <section id="services" class="services-section">
     <div class="container">
-      <h2>ჩვენი სერვისები</h2>
+      <h2 class="section-title">ჩვენი სერვისები</h2>
+      <p class="section-subtitle">აირჩიეთ სასურველი პროცედურა და დაჯავშნეთ ონლაინ</p>
+
       <div class="services-grid">
-        <div class="service-card"><div class="icon">✂️</div><h3>თმის შეჭრა</h3></div>
-        <div class="service-card"><div class="icon">💇‍♀️</div><h3>ვარცხნილობა</h3></div>
-        <div class="service-card"><div class="icon">💄</div><h3>მაკიაჟი</h3></div>
-        <div class="service-card"><div class="icon">💅</div><h3>შილაკი</h3></div>
-        <div class="service-card"><div class="icon">🦶</div><h3>პედიკური</h3></div>
-        <div class="service-card"><div class="icon">⚡</div><h3>ლაზერული ეპილაცია</h3></div>
-        <div class="service-card"><div class="icon">✨</div><h3>წარბის კორექცია</h3></div>
-        <div class="service-card"><div class="icon">👁️</div><h3>წამწამების დაგრძელება</h3></div>
+        <div class="service-card">
+          <div class="icon">✂️</div>
+          <h3>თმის შეჭრა</h3>
+          <p>ქალის და მამაკაცის თმის შეჭრა, ფორმის მიცემა და გაჯანსაღება.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">💇‍♀️</div>
+          <h3>ვარცხნილობა</h3>
+          <p>ყოველდღიური, საღამოს და საქორწილო ვარცხნილობები.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">💄</div>
+          <h3>მაკიაჟი</h3>
+          <p>პროფესიონალური ვიზაჟი: Nude, Evening, Bridal & Photo Makeup.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">💅</div>
+          <h3>შილაკი</h3>
+          <p>აპარატურული მანიკური, ფრჩხილის გამაგრება და გელ-ლაქის დაფარვა.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">🦶</div>
+          <h3>პედიკური</h3>
+          <p>ესთეტიკური და სპა პედიკური რბილი და მოვლილი კანისთვის.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">⚡</div>
+          <h3>ლაზერული ეპილაცია</h3>
+          <p>სრულიად უმტკივნეულო სამსხივიანი ლაზერული ეპილაცია.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">✨</div>
+          <h3>წარბის კორექცია</h3>
+          <p>წარბის არქიტექტურა, კორექცია, შეღებვა ხნით ან საღებავით.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">👁️</div>
+          <h3>წამწამების დაგრძელება</h3>
+          <p>კლასიკური, 2D, 3D და მოცულობითი წამწამების დაგრძელება.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -307,10 +119,17 @@
   <section id="booking" class="booking-section">
     <div class="container">
       <div class="booking-wrapper">
+
         <div class="booking-info">
           <h2>დაჯავშნე ვიზიტი</h2>
-          <p>📍 <strong>მისამართი:</strong> ვაშლიჯვარი ვ. გოძიაშვილის 2ა, თბილისი</p>
-          <p>📞 <strong>ტელეფონი:</strong> +995 574 02 96 07</p>
+          <p>აირჩიეთ სასურველი მომსახურება, თარიღი და თავისუფალი დრო. ჯავშნის დასტური ავტომატურად გაიგზავნება.</p>
+
+          <ul class="info-list">
+            <li>📍 <strong>მისამართი:</strong> ვაშლიჯვარი ვ. გოძიაშვილის 2ა, თბილისი</li>
+            <li>🕒 <strong>სამუშაო საათები:</strong> ყოველდღე 10:00 - 22:00</li>
+            <li>📞 <strong>ტელეფონი:</strong> +995 (995) 574 02 96 07</li>
+            <li>✉️ <strong>ელ.ფოსტა:</strong> ninikoaaa@gmail.com</li>
+          </ul>
         </div>
 
         <div class="booking-form-box">
@@ -320,9 +139,11 @@
               <input type="text" id="name" placeholder="მაგ: ნინო კაპანაძე" required>
             </div>
 
-            <div class="form-group">
-              <label for="phone">ტელეფონი *</label>
-              <input type="tel" id="phone" placeholder="599 12 34 56" maxlength="11" required>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">ტელეფონი *</label>
+                <input input type="tel" id="phone" placeholder="--- -- -- --" maxlength="11" required>
+              </div>
             </div>
 
             <div class="form-group">
@@ -340,20 +161,21 @@
               </select>
             </div>
 
-            <div class="form-group">
-              <label for="date">თარიღი *</label>
-              <input type="date" id="date" required>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date">თარიღი *</label>
+                <input type="date" id="date" required>
+              </div>
+              <div class="form-group">
+                <label for="time">დრო (10:00 - 22:00) *</label>
+                <select id="time" required>
+                  <option value="" disabled selected>ჯერ აირჩიეთ სერვისი და თარიღი</option>
+                </select>
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="time">დრო *</label>
-              <select id="time" required>
-                <option value="" disabled selected>ჯერ აირჩიეთ სერვისი და თარიღი</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="notes">შენიშვნა</label>
+              <label for="notes">შენიშვნა (არასავალდებულო)</label>
               <textarea id="notes" rows="3" placeholder="დამატებითი სურვილები..."></textarea>
             </div>
 
@@ -361,131 +183,155 @@
             <div id="statusMessage" class="status-msg"></div>
           </form>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div class="container">
-      <p>&copy; 2026 Gla-More Aesthetic Center. ყველა უფლება დაცულია.</p>
+    <div class="container text-center">
+      <p>&copy; 2026 Gla-More Aesthetic Center  ყველა უფლება დაცულია.</p>
     </div>
   </footer>
 
-  <!-- SCRIPT -->
+  <!-- შეთავაზებები და გალერეა -->
+<section id="special-offers" class="services-section" style="background: #ffffff;">
+  <div class="container">
+    <h2 class="section-title">🔥 სპეციალური შეთავაზებები & ნამუშევრები</h2>
+    <div id="publicOffersGrid" class="services-grid"></div>
+  </div>
+</section>
+
+<script>
+  // ატვირთული შეთავაზებების გამოჩენა მთავარ გვერდზე
+  async function loadPublicOffers() {
+    const res = await fetch('/api/offers');
+    const data = await res.json();
+    const grid = document.getElementById('publicOffersGrid');
+    if(!grid) return;
+    grid.innerHTML = '';
+
+    data.forEach(o => {
+      const mediaTag = o.mediaType === 'video' 
+        ? `<video src="${o.mediaUrl}" style="width:100%; height:200px; object-fit:cover; border-radius:8px;" controls></video>`
+        : `<img src="${o.mediaUrl}" style="width:100%; height:200px; object-fit:cover; border-radius:8px;">`;
+
+      grid.innerHTML += `
+        <div class="service-card">
+          ${mediaTag}
+          <h3 style="margin-top:15px;">${o.title}</h3>
+          <p style="font-size:18px; color:#d47a85; font-weight:bold;">${o.price}</p>
+        </div>
+      `;
+    });
+  }
+  loadPublicOffers();
+</script>
   <script>
-    // 🔴 ლოკალურად ტესტირებისას გამოიყენეთ: http://localhost:5000
-    // 🟢 Render-ზე ატვირთვისას ჩაწერეთ: https://your-app.onrender.com
-    const API_BASE_URL = "https://glamore.onrender.com"; 
+  // შეცვალეთ ეს ბმული Render-ის ბმულით, როცა საიტს ონლაინ გაუშვებთ
+  const API_BASE_URL = "https://glamore.onrender.com"; 
 
-    const phoneInput = document.getElementById('phone');
-    const dateInput = document.getElementById('date');
-    const serviceSelect = document.getElementById('service');
-    const timeSelect = document.getElementById('time');
+  const dateInput = document.getElementById('date');
+  const serviceSelect = document.getElementById('service');
+  const timeSelect = document.getElementById('time');
+  const phoneInput = document.getElementById('phone');
 
-    // ტელეფონის ნომრის ვალიდაცია
-    phoneInput.addEventListener('keypress', (e) => {
-      if (!/[0-9]/.test(e.key)) e.preventDefault();
-    });
+  // აკრძალოს ასოების აკრეფა ტელეფონის ველში
+  phoneInput.addEventListener('keypress', (e) => {
+    if (!/[0-9]/.test(e.key)) e.preventDefault();
+  });
 
-    phoneInput.addEventListener('input', (e) => {
-      let rawValue = e.target.value.replace(/\D/g, '');
-      if (rawValue.length > 10) rawValue = rawValue.substring(0, 9);
-      let formattedValue = '';
-      if (rawValue.length > 0) formattedValue += rawValue.substring(0, 3);
-      if (rawValue.length >= 4) formattedValue += ' ' + rawValue.substring(3, 5);
-      if (rawValue.length >= 6) formattedValue += ' ' + rawValue.substring(5, 7);
-      if (rawValue.length >= 8) formattedValue += ' ' + rawValue.substring(7, 9);
-      e.target.value = formattedValue;
-    });
+  // თარიღის შეზღუდვა (წარსული თარიღები რომ ვერ აირჩიონ)
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.min = today;
 
-    // თარიღების მართვა
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.min = today;
+  // სერვერიდან თავისუფალი/დაკავებული საათების წამოღება
+  async function updateAvailableTimes() {
+    const selectedService = serviceSelect.value;
+    const selectedDate = dateInput.value;
 
-    async function updateAvailableTimes() {
-      const selectedService = serviceSelect.value;
-      const selectedDate = dateInput.value;
-      timeSelect.innerHTML = '<option value="" disabled selected>აირჩიეთ დრო</option>';
+    timeSelect.innerHTML = '<option value="" disabled selected>აირჩიეთ დრო</option>';
 
-      if (!selectedService || !selectedDate) return;
+    if (!selectedService || !selectedDate) return;
 
-      let bookedTimes = [];
-      try {
-        const res = await fetch(`${API_BASE_URL}/api/booked-slots?service=${encodeURIComponent(selectedService)}&date=${selectedDate}`);
-        const data = await res.json();
-        bookedTimes = data.bookedTimes || [];
-      } catch (err) {
-        console.error('Error fetching booked slots:', err);
-      }
-
-      for (let h = 10; h <= 21; h++) {
-        const hourStr = h < 10 ? `0${h}:00` : `${h}:00`;
-        const option = document.createElement('option');
-        option.value = hourStr;
-
-        if (bookedTimes.includes(hourStr)) {
-          option.textContent = `${hourStr} ❌ (დაკავებულია)`;
-          option.disabled = true;
-          option.style.color = "#999999";
-        } else {
-          option.textContent = `${hourStr} ✓ (თავისუფალია)`;
-        }
-        timeSelect.appendChild(option);
-      }
+    let bookedTimes = [];
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/booked-slots?service=${encodeURIComponent(selectedService)}&date=${selectedDate}`);
+      const data = await res.json();
+      bookedTimes = data.bookedTimes || [];
+    } catch (err) {
+      console.error('შეცდომა დაკავებული დროების წამოღებისას:', err);
     }
 
-    serviceSelect.addEventListener('change', updateAvailableTimes);
-    dateInput.addEventListener('change', updateAvailableTimes);
+    // 10:00-დან 21:00-მდე საათების ჩამონათვალი
+    for (let h = 10; h <= 21; h++) {
+      const hourStr = h < 10 ? `0${h}:00` : `${h}:00`;
+      const option = document.createElement('option');
+      option.value = hourStr;
 
-    // ფორმის გაგზავნა
-    document.getElementById('bookingForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const submitBtn = document.getElementById('submitBtn');
-      const statusDiv = document.getElementById('statusMessage');
-
-      submitBtn.disabled = true;
-      submitBtn.innerText = "იგზავნება...";
-      statusDiv.className = "status-msg";
-      statusDiv.innerText = "";
-
-      const formData = {
-        name: document.getElementById('name').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        service: serviceSelect.value,
-        date: dateInput.value,
-        time: timeSelect.value,
-        notes: document.getElementById('notes').value.trim()
-      };
-
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/booking`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          statusDiv.className = "status-msg success";
-          statusDiv.innerText = "✓ " + result.message;
-          document.getElementById('bookingForm').reset();
-          dateInput.min = today;
-          updateAvailableTimes();
-        } else {
-          statusDiv.className = "status-msg error";
-          statusDiv.innerText = "✕ " + result.message;
-        }
-      } catch (err) {
-        statusDiv.className = "status-msg error";
-        statusDiv.innerText = "✕ სერვერთან დაკავშირება ვერ მოხერხდა. შეამოწმეთ სერვერი ჩართულია თუ არა.";
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerText = "ვიზიტის დაჯავშნა";
+      if (bookedTimes.includes(hourStr)) {
+        option.textContent = `${hourStr} ❌ (დაკავებულია)`;
+        option.disabled = true;
+        option.style.color = "#999999";
+      } else {
+        option.textContent = `${hourStr} ✓ (თავისუფალია)`;
       }
-    });
-  </script>
+      timeSelect.appendChild(option);
+    }
+  }
+
+  serviceSelect.addEventListener('change', updateAvailableTimes);
+  dateInput.addEventListener('change', updateAvailableTimes);
+
+  // ჯავშნის გაგზავნა სერვერზე
+  document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('submitBtn');
+    const statusDiv = document.getElementById('statusMessage');
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = "იგზავნება...";
+    statusDiv.className = "status-msg";
+    statusDiv.innerText = "";
+
+    const formData = {
+      name: document.getElementById('name').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      service: serviceSelect.value,
+      date: dateInput.value,
+      time: timeSelect.value,
+      notes: document.getElementById('notes').value.trim()
+    };
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/booking`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        statusDiv.className = "status-msg success";
+        statusDiv.innerText = "✓ " + result.message;
+        document.getElementById('bookingForm').reset();
+        dateInput.min = today;
+        updateAvailableTimes();
+      } else {
+        statusDiv.className = "status-msg error";
+        statusDiv.innerText = "✕ " + result.message;
+      }
+    } catch (err) {
+      statusDiv.className = "status-msg error";
+      statusDiv.innerText = "✕ სერვერთან დაკავშირება ვერ მოხერხდა. შეამოწმეთ ჩართულია თუ არა backend სერვერი.";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "ვიზიტის დაჯავშნა";
+    }
+  });
+</script>
 </body>
 </html>
